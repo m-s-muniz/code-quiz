@@ -113,6 +113,61 @@ function startQuiz() {
         }
       }
     
+       // click on question answer to either generate new question or end quiz if final question, and deduct time for answering wrong
+  function questionClick() {
+    // check if user guessed wrong
+    if (this.value !== questions[currentQuestionIndex].answer) {
+     // subtract time if answer is wrong
+      time -= 10;
+  
+      if (time < 0) {
+        time = 0;
+      }
+  
+     // refresh new time on display
+      timeEl.textContent = time;
+  
+      feedbackEl.textContent = "Wrong!";
+    } else {
+
+      feedbackEl.textContent = "Correct!";
+    }
+  
+    // display right/wrong feedback on page for a second
+    feedbackEl.setAttribute("class", "feedback");
+    setTimeout(function() {
+      feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+  
+    // get next question
+    currentQuestionIndex++;
+  
+    // check to see if there are any more questions
+    if (currentQuestionIndex === questions.length) {
+      quizEnd();
+    } else {
+      getQuestion();
+    }
+  }
+
+    // end the quiz function
+    function quizEnd() {
+        // stop timer
+        clearInterval(timerId);
+      
+        // show end screen
+        var highscoreSectionEl = document.querySelector("#highscore-section");
+        highscoreSectionEl.setAttribute("class", "show");
+      
+        // show final score
+        var finalScoreEl = document.querySelector("#final-score");
+        finalScoreEl.textContent = time;
+      
+        // hide questions section
+        quizScreen.setAttribute("class", "hide");
+      }
+    
+
 
 
    // user clicks button to start quiz
