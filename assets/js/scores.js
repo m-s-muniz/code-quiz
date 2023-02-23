@@ -30,4 +30,5 @@ function displayHighscores() {
   
   // run function when page loads
   displayHighscores();
+
   

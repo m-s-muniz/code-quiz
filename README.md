@@ -27,6 +27,13 @@ THEN I can save my initials and my score
 ```
 
 ### The URL of the deployed application
+
 https://m-s-muniz.github.io/code-quiz/
+
 ### Screen shots
 
+![Alt text](assets/images/Screen%20Shot%201.png)
+![Alt text](assets/images/Screen%20Shot%202.png)
+![Alt text](assets/images/Screen%20Shot%203.png)
+![Alt text](assets/images/Screen%20Shot%204.png)
+![Alt text](assets/images/Screen%20Shot%205.png)
