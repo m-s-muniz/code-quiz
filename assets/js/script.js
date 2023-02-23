@@ -136,29 +136,41 @@ function startQuiz() {
         // get value of input box
         var initials = initialsEl.value.trim();
       
-        // make sure value wasn't empty
+        // check to see if it is empty
         if (initials !== "") {
           // get saved scores from localstorage, or if not any, set to empty array
           var highscores =
             JSON.parse(localStorage.getItem("highscores")) || [];
       
-          // start new score object for current user
+          // make new score object for current user
           var newScore = {
             score: time,
             initials: initials
           };
       
           // save to localstorage
+          highscores.push(newScore);
+          localStorage.setItem("highscores", JSON.stringify(highscores));
 
           // move to highScore webpage
-
+          location.href="highScore.html";
         }
     }             
 
-    
+    function checkForEnter(event) {
+        // "13" represents the Enter key
+        if (event.key === "Enter") {
+          saveHighscore();
+        }
+      }
 
-   // user clicks button to start quiz
-    startBtn.onclick = startQuiz;
+
+        // user clicks button to submit initials
+         submitBtn.onclick = saveHighscore;
   
+
+        // user clicks button to start quiz
+         startBtn.onclick = startQuiz;
+         initialsEl.onkeyup = checkForEnter;
 
 
