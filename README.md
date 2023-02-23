@@ -27,5 +27,6 @@ THEN I can save my initials and my score
 ```
 
 ### The URL of the deployed application
-
+https://m-s-muniz.github.io/code-quiz/
 ### Screen shots
+

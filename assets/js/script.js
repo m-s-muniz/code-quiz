@@ -113,43 +113,7 @@ function startQuiz() {
         }
       }
     
-       // click on question answer to either generate new question or end quiz if final question, and deduct time for answering wrong
-  function questionClick() {
-    // check if user guessed wrong
-    if (this.value !== questions[currentQuestionIndex].answer) {
-     // subtract time if answer is wrong
-      time -= 10;
-  
-      if (time < 0) {
-        time = 0;
-      }
-  
-     // refresh new time on display
-      timeEl.textContent = time;
-  
-      feedbackEl.textContent = "Wrong!";
-    } else {
-
-      feedbackEl.textContent = "Correct!";
-    }
-  
-    // display right/wrong feedback on page for a second
-    feedbackEl.setAttribute("class", "feedback");
-    setTimeout(function() {
-      feedbackEl.setAttribute("class", "feedback hide");
-    }, 1000);
-  
-    // get next question
-    currentQuestionIndex++;
-  
-    // check to see if there are any more questions
-    if (currentQuestionIndex === questions.length) {
-      quizEnd();
-    } else {
-      getQuestion();
-    }
-  }
-
+      
     // end the quiz function
     function quizEnd() {
         // stop timer
@@ -167,8 +131,31 @@ function startQuiz() {
         quizScreen.setAttribute("class", "hide");
       }
     
+    // function to save highscore
+    function saveHighscore() {
+        // get value of input box
+        var initials = initialsEl.value.trim();
+      
+        // make sure value wasn't empty
+        if (initials !== "") {
+          // get saved scores from localstorage, or if not any, set to empty array
+          var highscores =
+            JSON.parse(localStorage.getItem("highscores")) || [];
+      
+          // start new score object for current user
+          var newScore = {
+            score: time,
+            initials: initials
+          };
+      
+          // save to localstorage
 
+          // move to highScore webpage
 
+        }
+    }             
+
+    
 
    // user clicks button to start quiz
     startBtn.onclick = startQuiz;
